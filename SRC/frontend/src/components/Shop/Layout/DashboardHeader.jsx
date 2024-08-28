@@ -16,6 +16,7 @@ const DashboardHeader = () => {
           <img
             src={logo}
             alt="Logo"
+            style={{ width: '150px', height: 'auto' }}
           />
         </Link>
       </div>
