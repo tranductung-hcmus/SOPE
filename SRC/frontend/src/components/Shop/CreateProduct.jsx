@@ -50,49 +50,55 @@ const CreateProduct = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    // Check for duplicate product
-    const existingProduct = allProducts.find((product) => 
-      product.name === name && 
-      product.originalPrice === originalPrice && 
-      product.images.length === images.length && 
-      product.images.every((img, index) => img.url === images[index])
-    );
+  // Check if images are uploaded
+  if (images.length === 0) {
+    toast.error("Please upload at least one image for the product.");
+    return;
+  }
 
-    if (existingProduct) {
-      toast.error("A product with the same name, price, and images already exists. Please modify the product details.");
-      return;
-    }
+  // Check for duplicate product
+  const existingProduct = allProducts.find((product) => 
+    product.name === name && 
+    product.originalPrice === originalPrice && 
+    product.images.length === images.length && 
+    product.images.every((img, index) => img.url === images[index])
+  );
 
-    const newForm = new FormData();
+  if (existingProduct) {
+    toast.error("A product with the same name, price, and images already exists. Please modify the product details.");
+    return;
+  }
 
-    images.forEach((image) => {
-      newForm.set("images", image);
-    });
-    newForm.append("name", name);
-    newForm.append("description", description);
-    newForm.append("category", category);
-    newForm.append("tags", tags);
-    newForm.append("originalPrice", originalPrice);
-    newForm.append("discountPrice", discountPrice);
-    newForm.append("stock", stock);
-    newForm.append("shopId", seller._id);
+  const newForm = new FormData();
 
-    dispatch(
-      createProduct({
-        name,
-        description,
-        category,
-        tags,
-        originalPrice,
-        discountPrice,
-        stock,
-        shopId: seller._id,
-        images,
-      })
-    );
-  };
+  images.forEach((image) => {
+    newForm.set("images", image);
+  });
+  newForm.append("name", name);
+  newForm.append("description", description);
+  newForm.append("category", category);
+  newForm.append("tags", tags);
+  newForm.append("originalPrice", originalPrice);
+  newForm.append("discountPrice", discountPrice);
+  newForm.append("stock", stock);
+  newForm.append("shopId", seller._id);
+
+  dispatch(
+    createProduct({
+      name,
+      description,
+      category,
+      tags,
+      originalPrice,
+      discountPrice,
+      stock,
+      shopId: seller._id,
+      images,
+    })
+  );
+};
 
   return (
     <div className="w-[90%] 800px:w-[50%] bg-white shadow h-[80vh] rounded-[4px] p-3 overflow-y-scroll">
