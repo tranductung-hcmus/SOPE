@@ -102,7 +102,7 @@ const Header = ({ activeHeading }) => {
           <div className={`${styles.button} flex justify-center items-center`}>
             <Link to={`${isSeller ? "/dashboard" : "/shop-create"}`}>
               <h1 className="text-[#fff] text-center flex items-center justify-center">
-                {isSeller ? "Go Dashboard" : "Become Seller"}{" "}
+                <span className="font-bold">{isSeller ? "Go Dashboard" : "Become Seller"}</span>
                 <IoIosArrowForward className="ml-1" />
               </h1>
             </Link>
@@ -219,8 +219,8 @@ const Header = ({ activeHeading }) => {
           <div>
             <Link to="/">
               <img
-                src="https://shopo.quomodothemes.website/assets/images/logo.svg"
-                alt=""
+                src={logo}
+                alt="Logo"
                 className="mt-3 cursor-pointer"
               />
             </Link>
