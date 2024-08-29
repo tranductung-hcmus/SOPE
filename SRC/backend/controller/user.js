@@ -112,14 +112,14 @@ router.post(
       const user = await User.findOne({ email }).select("+password");
 
       if (!user) {
-        return next(new ErrorHandler("User doesn't exists!", 400));
+        return next(new ErrorHandler("Please provide the correct information!", 400));
       }
 
       const isPasswordValid = await user.comparePassword(password);
 
       if (!isPasswordValid) {
         return next(
-          new ErrorHandler("Please provide the correct information", 400)
+          new ErrorHandler("Please provide the correct information!", 400)
         );
       }
 
