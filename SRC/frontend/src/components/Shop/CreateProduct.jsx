@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 const CreateProduct = () => {
   const { seller } = useSelector((state) => state.seller);
-  const { success, error } = useSelector((state) => state.products);
+  const { success, error, allProducts } = useSelector((state) => state.products); // add allProducts here
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -52,6 +52,19 @@ const CreateProduct = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Check for duplicate product
+    const existingProduct = allProducts.find((product) => 
+      product.name === name && 
+      product.originalPrice === originalPrice && 
+      product.images.length === images.length && 
+      product.images.every((img, index) => img.url === images[index])
+    );
+
+    if (existingProduct) {
+      toast.error("A product with the same name, price, and images already exists. Please modify the product details.");
+      return;
+    }
+
     const newForm = new FormData();
 
     images.forEach((image) => {
@@ -65,6 +78,7 @@ const CreateProduct = () => {
     newForm.append("discountPrice", discountPrice);
     newForm.append("stock", stock);
     newForm.append("shopId", seller._id);
+
     dispatch(
       createProduct({
         name,
@@ -81,7 +95,7 @@ const CreateProduct = () => {
   };
 
   return (
-    <div className="w-[90%] 800px:w-[50%] bg-white  shadow h-[80vh] rounded-[4px] p-3 overflow-y-scroll">
+    <div className="w-[90%] 800px:w-[50%] bg-white shadow h-[80vh] rounded-[4px] p-3 overflow-y-scroll">
       <h5 className="text-[30px] font-Poppins text-center">Create Product</h5>
       {/* create product form */}
       <form onSubmit={handleSubmit}>
