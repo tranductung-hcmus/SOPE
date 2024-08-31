@@ -1,3 +1,4 @@
+@copyright by Sope 2024 
 1. Clone the repository from github. 
 2. cd backend ==> to go to backend folder, then "npm i" to install necessary packages. 
 3. cd frontend ==> to go to frontend folder, then "yarn" to install necessary packages. 
