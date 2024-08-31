@@ -3,7 +3,7 @@ Step 1: Clone the repository from github. <br>
 Step 2: cd backend ==> to go to backend folder, then "npm i" to install necessary packages. <br>
 Step 3: cd frontend ==> to go to frontend folder, then "yarn" to install necessary packages. <br>
 Step 4: cd socket ==> to go to socket folder, then "npm i" to install necessary packages. <br>
-Step 5: fill in the .env file in config in backend folder: <br>
+Step 5: fill in the .env file in config in backend folder: 
   *1, PORT = 8000 
   *2, JWT_SECRET_KEY = "" => get from the secure password generator web 
   *3, SMTP_HOST = smtp.gmail.com 
