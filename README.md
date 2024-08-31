@@ -1,5 +1,5 @@
 @copyright by Sope 2024
-Step 1: Clone the repository from github
+Step 1: Clone the repository from github <br>
 Step 2: cd backend ==> to go to backend folder, then "npm i" to install necessary packages.
 Step 3: cd frontend ==> to go to frontend folder, then "yarn" to install necessary packages.
 Step 4: cd socket ==> to go to socket folder, then "npm i" to install necessary packages.
