@@ -13,6 +13,9 @@ Step 5: fill in the .env file in config in backend folder: <br>
   *7, SMTP_MAIL, get the email that has SMTP_PASSWORD 
   *8, STRIPE_API_KEY, get from the stripe website, publishable key. 
   *9, STRIPE_SECRET_KEY, get from the stripe website, secret key. 
+    * Are there application / system problems for engineering to review?
+    * Are there poorly constructed policies that need to be fixed?
+    * Are there instrumentation gaps?
 Step 6: change origin in app.js, change to "http://localhost:3000/" 
 Step 7: change server = "http://localhost:8000/api/v2" in server.js, backend_url = "http://localhost:8000/" in frontend. <br>
 Step 8: change activationUrl = "http://localhost:3000/activation/${activationToken}" in user.js in controller in backend. <br>
